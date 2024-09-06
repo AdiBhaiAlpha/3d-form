@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
     <style>
         .outer {
             margin: auto;
@@ -11,62 +7,69 @@
             width: 400px;
             border: 2px solid black;
             position: relative;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            background: #f3f3f3;
-        }
-        h1 {
-            text-align: center;
         }
         p {
-            margin-left: 40px;
+            margin-left: 80px;
         }
-        .input-field {
-            margin-left: 40px;
+        .in {
+            margin-left: 80px;
             padding: 10px;
-            width: 80%;
         }
-        #submit-btn {
+        #bt {
             margin-top: 20px;
             position: absolute;
             left: 150px;
-            padding: 5px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        #submit-btn:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+        #bt:hover {
+            background: green;
+            font-size: 13px;
+            cursor: pointer;
+            color: white;
         }
     </style>
     <script>
-        function validateLogin() {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-            var button = document.getElementById("submit-btn");
+        function fa() {
+            var a = document.getElementById("a");
+            var b = document.getElementById("b");
+            var bt = document.getElementById("bt");
 
-            if (email === "cb@dev.co" && password === "adibhai") {
-                window.location.href = "welcome.html";
+            if (a.value === "" || b.value === "") {
+                f();
+                a.style.border = "3px solid red";
+                b.style.border = "3px solid red";
+                bt.value = "Pahila data tak";
+            } else if (a.value === "cb@dev.co" && b.value === "adibhai") {
+                window.location.href = "welcome.html"; // Redirect to welcome page
             } else {
-                alert("Invalid email or password! Please try again.");
+                a.style.border = "3px solid green";
+                b.style.border = "3px solid green";
+                bt.value = "Ha thik ahe ata";
+                bt.style.left = "120px";
+            }
+        }
+        
+        var flag = 1;
+        function f() {
+            var bt = document.getElementById("bt");
+            if (flag == 1) {
+                bt.style.left = "210px";
+                flag = 2;
+            } else if (flag == 2) {
+                bt.style.left = "80px";
+                flag = 1;
             }
         }
     </script>
 </head>
 <body>
     <div class="outer">
-        <h1>Login Form</h1>
+        <h1 style="text-align:center">Legend form</h1>
         <p>Enter Email</p>
-        <input class="input-field" type="email" placeholder="Enter email" id="email" />
-        <p>Enter Password</p>
-        <input class="input-field" type="password" placeholder="Enter password" id="password" />
+        <input class="in" type="text" placeholder="Enter email" id="a" />
+        <p>Enter Confirm Password</p>
+        <input class="in" type="password" placeholder="Enter password" id="b" />
         <br>
-        <input type="button" value="Login" onclick="validateLogin()" id="submit-btn" />
+        <input type="button" onmouseenter="fa()" onclick="fa()" value="Submit" id="bt" />
     </div>
 </body>
 </html>
